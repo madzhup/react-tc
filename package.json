@@ -1,6 +1,6 @@
 {
   "name": "react-tc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Nice middleware for testing react components",
   "repository": {
     "type": "git",
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/IvanPostol/react-tc#readme",
   "dependencies": {
-    "expect": "^1.20.1",
-    "react": "^15.1.0"
-  }
+    "expect": "^1.20.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0"
+  },
 }
