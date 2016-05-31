@@ -1,0 +1,23 @@
+{
+  "name": "react-tc",
+  "version": "1.0.0",
+  "description": "Nice middleware for testing react components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanPostol/react-tc.git"
+  },
+  "keywords": [
+    "react",
+    "test"
+  ],
+  "author": "Postol Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanPostol/react-tc/issues"
+  },
+  "homepage": "https://github.com/IvanPostol/react-tc#readme",
+  "dependencies": {
+    "expect": "^1.20.1",
+    "react": "^15.1.0"
+  }
+}
