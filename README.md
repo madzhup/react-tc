@@ -8,11 +8,13 @@ const anyProps = {
 };
 
 import { setup, tc } from 'react-tc';
+import Component from './Component';
 
-  const { output, props } = setup(Timeslot, { ...anyProps });
+const { output, props } = setup(Component, { ...anyProps });
 
-  tc(output, 'div', { // output - our component, 'div' - typeof component
-    style: 'someClassName' // style - props of component
-  }, 1); // 1 - length of component children (if u set this arg in undefined - by default children expect - 0
-  
+tc(output, 'div', { // output - our component, 'div' - typeof component
+  style: 'someClassName' // style - props of component
+}, 1); // 1 - length of component children (if u set this arg in undefined - by default children expect - 0
 ```
+
+#tc function will throw erros with their info
