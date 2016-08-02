@@ -21,7 +21,7 @@ class Context extends Component {
  * setup virtual component
  * @return { output, props, context }
  */
-export function setup(Component, props, context) {
+export function setup(Component, props = {}, context = {}) {
 
   const renderer = TestUtils.createRenderer();
 
@@ -31,7 +31,7 @@ export function setup(Component, props, context) {
     </Context>
   );
 
-  const output = renderer.getRenderOutput().props.children;
+  const output = renderer.getRenderOutput();
 
   return {
     output,
