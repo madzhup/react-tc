@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 
@@ -12,13 +12,13 @@ export function setup(Component, props = {}, context = {}) {
 
   const childContextTypes = {};
   Object.keys(context).forEach((key) => {
-    childContextTypes[key] = PropTypes.any
+    childContextTypes[key] = React.PropTypes.any
   });
 
   /**
    * Context provider
    */
-  class ContextProvider extends Component {
+  class ContextProvider extends React.Component {
 
     static childContextTypes = childContextTypes;
 
