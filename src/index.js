@@ -1,23 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
-
-/**
- * Context provider
- */
-class Context extends Component {
-
-  static childContextTypes = {};
-
-  getChildContext() {
-    return this.props.context;
-  }
-
-  render() {
-    return this.props.children;
-  }
-
-}
 
 /**
  * setup virtual component
@@ -27,10 +10,32 @@ export function setup(Component, props = {}, context = {}) {
 
   const renderer = TestUtils.createRenderer();
 
+  const childContextTypes = {};
+  Object.keys(context).forEach((key) => {
+    childContextTypes[key] = PropTypes.any
+  });
+
+  /**
+   * Context provider
+   */
+  class ContextProvider extends Component {
+
+    static childContextTypes = childContextTypes;
+
+    getChildContext() {
+      return context;
+    }
+
+    render() {
+      return (
+        <Component {...props} />
+      );
+    }
+
+  }
+
   renderer.render(
-    <Context context={context}>
-      <Component {...props} />
-    </Context>
+    <ContextProvider />
   );
 
   const output = renderer.getRenderOutput();
