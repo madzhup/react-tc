@@ -1,6 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
+
+/**
+ * Context provider
+ */
+class Context extends Component {
+
+  getChildContext() {
+    return this.props.context;
+  }
+
+  render() {
+    return this.props.children;
+  }
+
+}
+
+/**
+ * setup virtual component
+ * @return { output, props, context }
+ */
+export function setup(Component, props, context) {
+
+  const renderer = TestUtils.createRenderer();
+
+  renderer.render(
+    <Context context={context}>
+      <Component {...props} />
+    </Context>
+  );
+
+  const output = renderer.getRenderOutput().props.children;
+
+  return {
+    output,
+    props,
+    context
+  };
+
+}
 
 function convertObject(object) {
 
@@ -9,23 +48,6 @@ function convertObject(object) {
   }
 
   return object;
-
-}
-
-export function setup(Component, props) {
-
-  const renderer = TestUtils.createRenderer();
-
-  renderer.render(
-    <Component { ...props }>{ props.children }</Component>
-  );
-
-  const output = renderer.getRenderOutput();
-
-  return {
-    output,
-    props
-  };
 
 }
 

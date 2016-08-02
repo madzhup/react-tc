@@ -16,6 +16,13 @@
     "url": "https://github.com/IvanPostol/react-tc/issues"
   },
   "homepage": "https://github.com/IvanPostol/react-tc#readme",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib"
+  },
+  "babel": {
+    "presets": ["es2015", "react", "stage-0"]
+  },
   "dependencies": {
     "expect": "^1.20.1",
     "react-addons-test-utils": "^15.1.0"
