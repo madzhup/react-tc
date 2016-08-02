@@ -7,6 +7,8 @@ import expect from 'expect';
  */
 class Context extends Component {
 
+  static childContextTypes = {};
+
   getChildContext() {
     return this.props.context;
   }
