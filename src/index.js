@@ -10,32 +10,9 @@ export function setup(Component, props = {}, context = {}) {
 
   const renderer = TestUtils.createRenderer();
 
-  const childContextTypes = {};
-  Object.keys(context).forEach((key) => {
-    childContextTypes[key] = React.PropTypes.any
-  });
-
-  /**
-   * Context provider
-   */
-  class ContextProvider extends React.Component {
-
-    static childContextTypes = childContextTypes;
-
-    getChildContext() {
-      return context;
-    }
-
-    render() {
-      return (
-        <Component {...props} />
-      );
-    }
-
-  }
-
   renderer.render(
-    <ContextProvider />
+    <Component {...props} />,
+    context
   );
 
   const output = renderer.getRenderOutput();
